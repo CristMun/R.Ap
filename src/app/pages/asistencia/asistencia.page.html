@@ -1,0 +1,8 @@
+<app-header [isNotHome]="isNotHome" [pageTitle]="pageTitle"></app-header>
+
+
+<ion-content class="ion-padding" >
+  <ion-button [routerLink]="['/qrgen']"> Generar QR </ion-button>
+  <ion-button [routerLink]="['/qrscan']"> Escanear QR </ion-button>
+  <app-fab-button></app-fab-button>
+</ion-content>

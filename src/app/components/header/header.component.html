@@ -1,0 +1,12 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-buttons *ngIf="isNotHome" slot="start">
+      <ion-back-button color="blue" defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-capitalize">{{pageTitle}}</ion-title>
+  </ion-toolbar>
+</ion-header>
