@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormGroup,
-  FormControl,
-  Validators,
-  FormBuilder
-} from '@angular/forms';
-import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -13,38 +9,71 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+
+
+  isNotHome=true;
+
+  loading : HTMLIonLoadingElement;
   
-
-  formularioLogin: FormGroup;
-
-  constructor(public fb: FormBuilder,
-    public alertController: AlertController) {
-
-    this.formularioLogin = this.fb.group({
-      'nombre': new FormControl("",Validators.required),
-      'password': new FormControl("",Validators.required)
-    })
+  //modelo
+  user : any = {
+    email:'',
+    password: ''
   }
 
-  ngOnInit() {
-  }
-  async ingresar(){
-    var f = this.formularioLogin.value;
+  field : string = '';
 
-    var usuario = JSON.parse(localStorage.getItem('usuario'));
+  constructor(private toastController: ToastController, private loadingCtrl:LoadingController,  private router:Router) { }
 
-    if(usuario.nombre == f.nombre && usuario.password == f.password){
-      console.log('Ingresado');
-      
-    }else{
-      const alert = await this.alertController.create({
-        header: 'Datos incorrectos',
-        message: 'Los datos que ingresaste son incorrectos.',
-        buttons: ['Aceptar']
-      });
-  
-      await alert.present();
+  cargarLoading(message: string){
     
+    this.presentLoading(message);
+
+    setTimeout(() => {
+      this.loading.dismiss();
+    }, 2000);
+  }
+  async presentLoading(message: string){
+    this.loading = await this.loadingCtrl.create({
+      message,
+    });
+
+    await this.loading.present();
+  }
+
+  ngOnInit(){
+    this.cargarLoading('Bienvenido a RegistrApp!');
+    console.log('ngOnInit');
+  }
+
+  login(){
+    if(this.validarModelo(this.user)){
+      this.presentToast('Bienvenido! ' + this.user.email);
+      this.router.navigate(['/']);
+    }
+    else{
+      this.presentToast("Debes ingresar : " + this.field);
     }
   }
+
+  validarModelo(model:any){
+    for(var[key,value]  of Object.entries(model)){
+      if(value == ''){
+        this.field = key;
+        return false;
+      }
+    }
+    return true;
+  }
+
+  async presentToast(message: string, duration?:number) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: duration?duration:2000,
+      position: 'bottom'
+    });
+    await toast.present();
+  }
+
 }
+

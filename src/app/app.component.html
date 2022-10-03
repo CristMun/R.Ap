@@ -2,8 +2,13 @@
   <ion-split-pane contentId="main-content">
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
+        <ion-title>
+          <div class="logo-image">
+            <img alt="logo" src="../../../assets/img/RegistrApplogo.png">
+            </div>
+        </ion-title>
+        
         <ion-list id="inbox-list">
-                <!-- AQUI VA EL LOGO  -->
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
             <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
               <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>

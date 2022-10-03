@@ -18,16 +18,12 @@ export class RegisterPage implements OnInit {
   
   constructor(public fb: FormBuilder,
     public alertController: AlertController) {
-    this.formularioRegister = this.fb.group({
-      'nombre': new FormControl("", Validators.required),
-      'password': new FormControl("", Validators.required),
-      'confirmacionPassword': new FormControl("", Validators.required)
-    });
+   
   }
 
   ngOnInit() {
   }
-  async guardar(){
+  /* async guardar(){
     var f = this.formularioRegister.value;
     
     if(this.formularioRegister.invalid){
@@ -41,12 +37,35 @@ export class RegisterPage implements OnInit {
       return;
       
     }
+
     var usuario = {
-      nombre: f.nombre,
+      email: f.email,
       password: f.password
     }
 
+    const nombre="cristobal"
+
+
+    console.log(nombre)
     localStorage.setItem('usuario',JSON.stringify(usuario));
+  }*/
+
+    //modelo
+    user : any = {
+      nombre:'',
+      email:'',
+      password: ''
+    }
+  registrar(){
+    this.formularioRegister = this.fb.group({
+      
+      'email': new FormControl("", Validators.required),
+      'password': new FormControl("", Validators.required),
+      'confirmacionPassword': new FormControl("", Validators.required)
+    });
   }
+  getUser(){
+    
+  } as 
 
 }
