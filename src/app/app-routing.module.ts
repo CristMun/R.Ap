@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
 
@@ -29,10 +29,17 @@ const routes: Routes = [
     path: 'qrscan',
     loadChildren: () => import('./pages/qrscan/qrscan.module').then( m => m.QrscanPageModule)
   },
+ 
   {
-    path: '**',
-    redirectTo: '404'
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
+  {
+    path: 'register',
+    loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
+  },
+
+
 
 ];
 
