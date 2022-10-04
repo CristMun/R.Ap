@@ -9,10 +9,6 @@ export class AppComponent {
     { title: 'Home', url: '/home', icon: 'home' },
     { title: 'Asistencia', url: '/asistencia', icon: 'calendar' },
     { title: 'About', url: '/about', icon: 'alert' },
-    { tittle: 'Logout', url: '/login', icon:"log-out"},
-
-   
-    
 
   ];
  

@@ -1,11 +1,11 @@
+import { NavigationExtras, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import {
   FormGroup,
-  FormControl,
   Validators,
   FormBuilder
 } from '@angular/forms';
-import { AlertController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-register',
@@ -15,57 +15,62 @@ import { AlertController } from '@ionic/angular';
 export class RegisterPage implements OnInit {
 
   formularioRegister: FormGroup;
+  users = [];
+  isSubmit = false;
   
   constructor(public fb: FormBuilder,
-    public alertController: AlertController) {
+    public alertController: AlertController, private loadingController: LoadingController, private router: Router) {
    
   }
-
   ngOnInit() {
+    this.createForm();
   }
-  /* async guardar(){
-    var f = this.formularioRegister.value;
-    
-    if(this.formularioRegister.invalid){
-      const alert = await this.alertController.create({
-        header: 'Datos incompletos',
-        message: 'Tienes que llenar todos los datos',
-        buttons: ['Aceptar']
-      });
-      
-      await alert.present();
-      return;
-      
-    }
 
-    var usuario = {
-      email: f.email,
-      password: f.password
-    }
-
-    const nombre="cristobal"
-
-
-    console.log(nombre)
-    localStorage.setItem('usuario',JSON.stringify(usuario));
-  }*/
-
-    //modelo
-    user : any = {
-      nombre:'',
-      email:'',
-      password: ''
-    }
-  registrar(){
+  createForm(){
     this.formularioRegister = this.fb.group({
-      
-      'email': new FormControl("", Validators.required),
-      'password': new FormControl("", Validators.required),
-      'confirmacionPassword': new FormControl("", Validators.required)
+      correo: ['',Validators.compose([Validators.maxLength(70),Validators.pattern('^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+.)?[a-zA-Z]+.)?(duocuc|profesor.duoc).cl$'),Validators.required])],
+      password:['',[Validators.required,Validators.minLength(5)]],
+      tipouser:['',[Validators.required]],
     });
   }
-  getUser(){
-    
-  } as 
+
+  save(){
+    this.isSubmit = true;
+    if(!this.formularioRegister.valid){
+      console.log('Datos invalidos');
+      return false;
+    }else{
+      console.log(this.formularioRegister.value);
+      console.log(typeof this.formularioRegister.value);
+      this.users.push(this.formularioRegister.value);
+      this.loadingRegister();
+    }
+  }
+  async loadingRegister(){
+    const loading = await this.loadingController.create({
+      cssClass:'my-custom-class',
+      message: 'Creando cuenta',
+      duration: 2000,
+      spinner: 'bubbles'
+    });
+    await loading.present();
+    const {role,data} = await loading.onDidDismiss();
+    console.log('Creacion exitosa');
+
+    if(data==null){
+      const navigation : NavigationExtras = {
+        state: {
+          users: this.users
+        }
+      };
+      this.router.navigate(['login'],navigation)
+
+    }
+  }
+
+  get controlerror(){
+    return this.formularioRegister.controls;
+  }
+
 
 }

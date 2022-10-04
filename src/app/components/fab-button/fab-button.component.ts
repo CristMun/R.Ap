@@ -9,7 +9,7 @@ import { NavController } from '@ionic/angular';
 })
 export class FabButtonComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: Router, private navCtrl: NavController) { }
 
   ngOnInit() {}
 

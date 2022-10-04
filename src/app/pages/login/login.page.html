@@ -11,22 +11,22 @@
   <ion-card>
     <ion-card-content>
       <ion-item>
-        <ion-label position="floating">Email</ion-label>
-        <ion-input  type="email"
-                    [(ngModel)]="user.email"
+        <ion-label position="floating">Nombre Usuario</ion-label>
+        <ion-input  type="text"
+                    [(ngModel)]="usuario"
                     required
-                    pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$"
-                    placeholder="correo@correo.com"></ion-input>
+                    
+                    placeholder="Correo"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label position="floating">Password</ion-label>
+        <ion-label position="floating">Contraseña</ion-label>
         <ion-input  type="password"
-                    [(ngModel)]="user.password"
-                    pattern="^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{4,6}$"
+                    [(ngModel)]="password"
+                    placeholder="*****"
                     required></ion-input>
       </ion-item>
     </ion-card-content>
-    <ion-button shape="block" [routerLink]="['/home']" (click)="login()">Login</ion-button>
+    <ion-button shape="block" (click)="login()">Iniciar sesion</ion-button>
   </ion-card>
 </ion-content>
   
