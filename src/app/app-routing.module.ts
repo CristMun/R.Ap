@@ -11,6 +11,45 @@ const routes: Routes = [
     path: '',
     redirectTo: 'login',
     pathMatch: 'full'
+  }, {
+    path: 'home',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
+  {
+    path: 'asistencia',
+    redirectTo: 'asistencia',
+    pathMatch: 'full'
+  },
+  {
+    path: 'about',
+    redirectTo: 'about',
+    pathMatch: 'full'
+  },
+  {
+    path: 'qrgen',
+    redirectTo: 'qrgen',
+    pathMatch: 'full'
+  },
+  {
+    path: 'qrscan',
+    redirectTo: 'qrscan',
+    pathMatch: 'full'
+  },
+  {
+    path: 'register',
+    redirectTo: 'register',
+    pathMatch: 'full'
+  },
+  {
+    path: 'coversor',
+    redirectTo: 'coversor',
+    pathMatch: 'full'
+  },
+  {
+    path: '**',
+    redirectTo: 'e404',
+    pathMatch: 'full'
   },
 
   {
@@ -37,6 +76,16 @@ const routes: Routes = [
     path: 'register',
     loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
   },
+  {
+    path: 'e404',
+    loadChildren: () => import('./pages/e404/e404.module').then( m => m.E404PageModule)
+  },
+  {
+    path: 'coversor',
+    loadChildren: () => import('./pages/coversor/coversor.module').then( m => m.CoversorPageModule)
+  },
+
+
 
 
 
