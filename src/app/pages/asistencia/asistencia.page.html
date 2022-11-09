@@ -1,9 +1,17 @@
 <app-header [isNotHome]="isNotHome" [pageTitle]="pageTitle"></app-header>
 
-
 <ion-content class="ion-padding" >
-  <app-fab-button></app-fab-button>
-  <ion-button [routerLink]="['/qrgen']"> Generar QR </ion-button>
-  <ion-button [routerLink]="['/qrscan']"> Escanear QR </ion-button>
+  <div>
+    <ion-button expand="block" [routerLink]="['/qrgen']"> 
+      Generar QR
+      <ion-icon slot="start" name="qr-code"></ion-icon> 
+    </ion-button>
+  </div>
+  <div>
+    <ion-button expand="block" [routerLink]="['/qrscan']"> 
+        Escanear QR 
+        <ion-icon slot="start" name="camera"></ion-icon>
+      </ion-button> 
+  </div>
   <app-fab-button></app-fab-button>
 </ion-content>
