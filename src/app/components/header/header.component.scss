@@ -1,11 +1,4 @@
-.img-header{
-    width: 3em;
-    height: 3em;
-    position: absolute;
-    right: 1em;
-    top: 0.2em;
-}
-
-.toolbar{
-    height: 4em;
-}
+ion-thumbnail {
+    --size: 70px;
+    --border-radius: 14px;
+  }

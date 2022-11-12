@@ -12,10 +12,6 @@ export class AppComponent {
     { title: 'Mapa', url: '/mapa', icon: 'map' },
     { title: 'Coversor', url: '/coversor', icon: 'hammer' },
     { title: 'About', url: '/about', icon: 'alert' },
-    
-
-    
-
   ];
  
   constructor() {}

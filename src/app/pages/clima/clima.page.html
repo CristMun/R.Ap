@@ -1,0 +1,46 @@
+<app-header [isNotHome]="isNotHome" [pageTitle]="pageTitle"></app-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Ciudad</ion-label>
+          <ion-input type="text"
+          class="form-control"
+          autofocus #cityName
+          required
+          placeholder="Santiago"
+          ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Pais</ion-label>
+          <ion-input type="text"
+          class="form-control"
+          autofocus #cityCode
+          required
+          placeholder="CL/Chile"
+          ></ion-input>
+      </ion-item>
+      <ion-button shape="block" (click)="submitLocation(cityName, cityCode)">Consultar</ion-button>
+    </ion-card-content>
+    
+  </ion-card>
+          
+  <ion-card>
+      <div *ngIf="weather">
+        <h1>{{weather.name}}</h1>
+        <p class="info"><ion-icon name="thermometer-outline"></ion-icon>{{weather.main.temp}} °C</p>
+        <p class="info"><ion-icon name="water-outline"></ion-icon>{{weather.main.humidity}}</p>
+        <p class="desc">{{weather.weather[0].description }}</p>
+      </div>
+
+    
+    
+
+  </ion-card>
+
+      
+
+  <app-fab-button></app-fab-button>
+</ion-content>
