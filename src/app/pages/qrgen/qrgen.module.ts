@@ -8,6 +8,7 @@ import { QrgenPageRoutingModule } from './qrgen-routing.module';
 import { ComponentsModule } from 'src/app/components/components.module';
 
 import { QrgenPage } from './qrgen.page';
+import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { QrgenPage } from './qrgen.page';
     FormsModule,
     IonicModule,
     QrgenPageRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    NgxQRCodeModule
     
   ],
   declarations: [QrgenPage]

@@ -1,5 +1,20 @@
 <app-header [isNotHome]="isNotHome" [pageTitle]="pageTitle"></app-header>
 
 <ion-content>
+  <ion-card class="qr-card">
+    <ion-card-content>
+      <ngx-qrcode
+      [elementType]="elementType"
+      [errorCorrectionLevel]="correctionLevel"
+      [value]="value"
+      alt="QRCodeGen"
+      cssClass="bshadow"></ngx-qrcode>
+    </ion-card-content>
+    
+    <ion-card-content>
+      <textarea [(ngModel)] = "value"></textarea>
+    </ion-card-content>
+  </ion-card>
+  
     <app-fab-button></app-fab-button>
 </ion-content>
