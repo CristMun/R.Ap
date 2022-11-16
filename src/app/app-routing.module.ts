@@ -52,6 +52,11 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: 'map',
+    redirectTo: 'map',
+    pathMatch: 'full'
+  },
+  {
     path: '**',
     redirectTo: 'e404',
     pathMatch: 'full'
@@ -88,9 +93,14 @@ const routes: Routes = [
   {
     path: 'coversor',
     loadChildren: () => import('./pages/coversor/coversor.module').then( m => m.CoversorPageModule)
-  },  {
+  },
+  {
     path: 'clima',
     loadChildren: () => import('./pages/clima/clima.module').then( m => m.ClimaPageModule)
+  },
+  {
+    path: 'map',
+    loadChildren: () => import('./pages/map/map.module').then( m => m.MapPageModule)
   },
 
 
