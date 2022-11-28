@@ -12,7 +12,13 @@
             </ion-item>
           </ion-menu-toggle>
         </ion-list>
+        <ion-button (click)="logout()">
+          <ion-icon slot="end" name="log-out"></ion-icon>
+          <ion-label>Salir</ion-label>
+        </ion-button>
       </ion-content>
+
+      
     </ion-menu>
     <ion-router-outlet id="main-content"></ion-router-outlet>
   </ion-split-pane>

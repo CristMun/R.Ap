@@ -1,0 +1,83 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> {{ pageTitle }} </ion-title>
+    
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-buttons *ngIf="isNotHome" slot="start">
+      <ion-back-button color="blue" defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+
+    <ion-thumbnail slot="end">
+      <img src="../../../assets/img/RegistrApplogo.png" />
+    </ion-thumbnail> 
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list *ngIf="info">
+    <ion-item>
+      <ion-label>
+        {{info.name}}
+      </ion-label>
+      <ion-icon (click)="editAtributo('name')" slot="end" name="create"></ion-icon>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        {{info.lastname}}
+      </ion-label>
+      <ion-icon (click)="editAtributo('lastname')" slot="end" name="create"></ion-icon>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        {{info.rut}}
+      </ion-label>
+      <ion-icon (click)="editAtributo('rut')" slot="end" name="create"></ion-icon>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        {{info.age}} Año(s)
+      </ion-label>
+      <ion-icon (click)="editAtributo('age')" slot="end" name="create"></ion-icon>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        {{info.direction}}
+      </ion-label>
+      <ion-icon (click)="editAtributo('direction')" slot="end" name="create"></ion-icon>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        {{info.gender}}
+      </ion-label>
+      <ion-icon (click)="editGender('gender')" slot="end" name="create"></ion-icon>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        {{info.phone}}
+      </ion-label>
+      <ion-icon (click)="editAtributo('phone')" slot="end" name="create"></ion-icon>
+    </ion-item>
+    
+
+   <!--  Credenciales -->
+    <ion-item>
+      <ion-label>
+        {{info.email}} 
+      </ion-label>
+      <ion-icon (click)="editAtributo('email')" slot="end" name="create"></ion-icon>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        {{info.password}}
+      </ion-label>
+      <ion-icon  (click)="editAtributo('password')" slot="end" name="create"></ion-icon>
+    </ion-item>
+<!--  Credenciales -->
+</ion-list>
+<app-fab-button></app-fab-button>
+</ion-content>

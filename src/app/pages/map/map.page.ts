@@ -10,7 +10,7 @@ import * as Mapboxgl from 'mapbox-gl'
 })
 export class MapPage implements OnInit {
 
-  pageTitle = 'Coversor';
+  pageTitle = 'GPS';
   isNotHome = true;
 
   mapa: Mapboxgl.Map;

@@ -1,15 +1,24 @@
 <app-header [isNotHome]="isNotHome" [pageTitle]="pageTitle"></app-header>
 
 <ion-content [fullscreen]="true"> 
-  <app-fab-button></app-fab-button>
+
   
     <ion-card>
       <ion-card-header>
         <ion-card-subtitle>Bienvenido!</ion-card-subtitle>
         <ion-title></ion-title>
-        
       </ion-card-header>
       <ion-img src="../../../assets/icon/RegistrApp1.png"></ion-img>
     </ion-card>
+
+    <ion-card>
+      <ion-tab-button (click)="logout()">
+        <ion-icon name="log-out"></ion-icon>
+        <ion-label>Desconectarse</ion-label>
+      </ion-tab-button>
+    </ion-card>
+
+      
+
     
 </ion-content>

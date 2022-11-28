@@ -13,7 +13,7 @@ export class ClimaPage implements OnInit {
 
 
   constructor(private weatherService: WeatherService) { }
-  pageTitle = 'clima';
+  pageTitle = 'Clima';
   isNotHome = true;
 
   ngOnInit() {

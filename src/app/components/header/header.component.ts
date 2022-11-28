@@ -10,7 +10,9 @@ export class HeaderComponent implements OnInit {
   @Input() pageTitle : string;
   @Input() isNotHome : boolean;
 
-  constructor() { }
+  constructor() {
+    
+   }
 
   ngOnInit() {}
 

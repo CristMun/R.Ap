@@ -1,5 +1,7 @@
-import { Router, ActivatedRoute } from '@angular/router';
-import { Component, Input } from '@angular/core';
+import { AuthService } from './../../services/auth.service';
+import { AlertController, LoadingController, ToastController } from '@ionic/angular';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -9,38 +11,50 @@ import { Component, Input } from '@angular/core';
 })
 export class HomePage {
 
-  pageTitle = 'home';
-  isNotHome = false;
-  currentUser: any;
-  nombre: string;
-  tipo: string;
+  login: boolean = false;
+  loading: HTMLIonLoadingElement;
 
-  constructor(private route: ActivatedRoute, private router: Router) {
-    this.route.queryParams.subscribe(params => {
-      console.log('params: ', params);
-      if (this.router.getCurrentNavigation().extras.state) {
-        this.currentUser = this.router.getCurrentNavigation().extras.state.user;
-        this.nombre = this.router.getCurrentNavigation().extras.state.user.correo.split('@')[0];
-        this.nombre = this.capitalize(this.nombre);
-        this.tipo = this.router.getCurrentNavigation().extras.state.user.tipouser;
-      }
-      console.log(this.nombre);
-      console.log(this.tipo);
-    });
+  pageTitle = 'Home';
+  isNotHome = false;
+
+  constructor(private auth: AuthService,
+            private loadingController:LoadingController,
+            private router: Router,) {
+
+        this.auth.stateUser().subscribe( res => {
+          if(res) {
+            console.log('Esta logeado');
+            this.login = true
+            
+          }else {
+            console.log('no esta logeado');
+            this.login = false
+            
+          }
+        }) 
    }
 
-  ngOnInit() {
+   logout(){
+    this.auth.logout();
+    this.cargarLoading('Cerrando sesion...');
+    this.router.navigate(['/login'])
   }
 
-  capitalize(email: string){
-    return email[0].toUpperCase() + email.slice(1).toLowerCase();
+  cargarLoading(message: string){
+    
+    this.presentLoading(message);
+
+    setTimeout(() => {
+      this.loading.dismiss();
+    }, 1000);
+  }
+  async presentLoading(message: string){
+    this.loading = await this.loadingController.create({
+      message,
+    });
+    await this.loading.present();
   }
 
-
-  
 }
-/*   convertidor(email:string){
-    return email[0].toUpperCase() + email.slice(1).toLowerCase();
-  } */
 
 

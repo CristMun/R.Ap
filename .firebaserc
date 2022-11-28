@@ -1,0 +1,21 @@
+{
+  "targets": {
+    "proyecto-pgy-registrapp": {
+      "hosting": {
+        "app": [
+          "proyecto-pgy-registrapp"
+        ]
+      }
+    },
+    "proyecto-pgy-registrapp-10206": {
+      "hosting": {
+        "app": [
+          "proyecto-pgy-registrapp-10206"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "proyecto-pgy-registrapp-10206"
+  }
+}

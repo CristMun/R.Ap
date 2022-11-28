@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <ion-item class="ion-margin-bottom">
+        <ion-input [(ngModel)]="datos.name" type="text" placeholder="Nombre"></ion-input>
+      </ion-item>
+      <ion-item class="ion-margin-bottom">
+        <ion-input [(ngModel)]="datos.lastname" type="text" placeholder="Apellido"></ion-input>
+      </ion-item>
+      <ion-item class="ion-margin-bottom">
+        <ion-input [(ngModel)]="datos.rut" type="text" placeholder="Rut"></ion-input>
+      </ion-item>
+      <ion-item class="ion-margin-bottom">
+        <ion-input [(ngModel)]="datos.age" type="number" placeholder="Edad"></ion-input>
+      </ion-item>
+      <ion-list>
+        <ion-item>
+          <ion-select [(ngModel)]="datos.gender" placeholder="Genero">
+            <ion-select-option value="masculino">Masculino</ion-select-option>
+            <ion-select-option value="femenino">Femenino</ion-select-option>
+            <ion-select-option value="nobi">No Binario</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+      <ion-item class="ion-margin-bottom">
+        <ion-input [(ngModel)]="datos.phone" type="number" placeholder="Telefono"></ion-input>
+      </ion-item>
+      <ion-item class="ion-margin-bottom">
+        <ion-input [(ngModel)]="datos.direction" type="text" placeholder="Direccion"></ion-input>
+      </ion-item>
+
+      <ion-list>
+        <ion-title>
+          <h2> Credenciales:</h2>
+        </ion-title>
+        <ion-item class="ion-margin-bottom">
+          <ion-input [(ngModel)]="datos.email" type="email" placeholder="Email"></ion-input>
+        </ion-item>
+        <ion-item class="ion-margin-bottom">
+          <ion-input [(ngModel)]="datos.password"  type="password" placeholder="Contraseña"></ion-input>
+        </ion-item>
+      </ion-list>
+      
+<!--       <ion-item class="ion-margin-bottom">
+        <ion-input  type="text" placeholder="Imagen de perfil"></ion-input>
+      </ion-item> -->
+      
+      <ion-button (click)="registrar()"><ion-label>Registrarse</ion-label></ion-button>
+      <ion-button [routerLink]="['/login']" routerLinkActive="router-link-active"><ion-label>Iniciar sesion</ion-label></ion-button>
+    </ion-card-content>
+  
+  </ion-card>
+</ion-content>
