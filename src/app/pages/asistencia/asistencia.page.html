@@ -2,13 +2,13 @@
 
 <ion-content class="ion-padding" >
   <div>
-    <ion-button expand="block" [routerLink]="['/qrgen']"> 
+    <ion-button expand="block" [routerLink]="['/qrgen']" > 
       Generar QR
       <ion-icon slot="start" name="qr-code"></ion-icon> 
     </ion-button>
   </div>
   <div>
-    <ion-button expand="block" [routerLink]="['/qrscan']"> 
+    <ion-button expand="block"  (click)="qrScanBtn()"> 
         Escanear QR 
         <ion-icon slot="start" name="camera"></ion-icon>
       </ion-button> 
