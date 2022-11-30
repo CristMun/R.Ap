@@ -10,6 +10,8 @@ import { UsuarioservService } from 'src/app/services/usuarioserv.service';
   styleUrls: ['./admin.page.scss'],
 })
 export class AdminPage{
+   pageTitle = 'Clima';
+  isNotHome = true;
 
   listadoPersona: Usuario[] = [];
 
