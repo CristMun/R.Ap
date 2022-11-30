@@ -35,7 +35,7 @@ export class AdminPage{
     const modal = await this.modalCtrl.create({
       component: ModalComponent,
       componentProps: { uid: usuario.uid },
-      breakpoints: [0,0.5,0.8],
+      breakpoints: [0,0.5,1],
       initialBreakpoint:0.5
     });
     modal.present();
