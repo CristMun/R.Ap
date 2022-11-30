@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { FabButtonComponent } from './fab-button.component';
+import { ModalComponent } from './modal.component';
 
-describe('FabMenuComponent', () => {
-  let component: FabButtonComponent;
-  let fixture: ComponentFixture<FabButtonComponent>;
+describe('ModalComponent', () => {
+  let component: ModalComponent;
+  let fixture: ComponentFixture<ModalComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ FabButtonComponent ],
+      declarations: [ ModalComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(FabButtonComponent);
+    fixture = TestBed.createComponent(ModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
@@ -22,4 +22,3 @@ describe('FabMenuComponent', () => {
     expect(component).toBeTruthy();
   });
 });
-

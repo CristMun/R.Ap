@@ -18,14 +18,14 @@ export class AppComponent {
   rol: 'alumno' | 'profesor' | 'admin' = null
 
   public appPages = [
-    { title: 'Home', url: '/home', icon: 'home'},
-    { title: 'Mi Perfil', url: '/perfil', icon: 'person' },
-    { title: 'Asistencia', url: '/asistencia', icon: 'calendar' },
-    { title: 'Clima', url: '/clima', icon: 'sunny' },
-    { title: 'Mapa', url: '/map', icon: 'map' },
-    { title: 'Conversor', url: '/coversor', icon: 'cash' },
-    { title: 'About', url: '/about', icon: 'alert' },
-    { title: 'Admin', url: '/admin', icon: 'hammer' },
+    { title: 'Home',       url: '/home',        icon: 'home'     },
+    { title: 'Mi Perfil',  url: '/perfil',      icon: 'person'   },
+    { title: 'Asistencia', url: '/asistencia',  icon: 'calendar' },
+    { title: 'Clima',      url: '/clima',       icon: 'sunny'    },
+    { title: 'Mapa',       url: '/map',         icon: 'map'      },
+    { title: 'Conversor',  url: '/coversor',    icon: 'cash'     },
+    { title: 'About',      url: '/about',       icon: 'alert'    },
+    { title: 'Admin',      url: '/admin',       icon: 'hammer'   },
   ];
  
   constructor(private firestore: FirestoreService,
@@ -44,7 +44,6 @@ export class AppComponent {
           this.login = false 
         }
     })
-    
   }
 
   getDatosUser(uid:string){

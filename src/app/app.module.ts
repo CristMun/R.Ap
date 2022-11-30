@@ -1,4 +1,3 @@
-import { AdminComponent } from './components/admin/admin.component';
 import { NgModule } from '@angular/core';
 import { HttpClientModule} from '@angular/common/http'
 import { BrowserModule } from '@angular/platform-browser';
@@ -12,6 +11,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { FabButtonComponent } from './components/fab-button/fab-button.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 //Firebase imports
 import { AngularFireModule } from '@angular/fire/compat';
@@ -34,7 +34,7 @@ import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
     LoginComponent,
     PerfilComponent,
     FabButtonComponent,
-    AdminComponent
+    ModalComponent,
   ],
   imports: [
     BrowserModule,

@@ -6,17 +6,16 @@ import { canActivate,redirectUnauthorizedTo} from '@angular/fire/auth-guard';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
-import { AdminComponent } from './components/admin/admin.component';
 
 
 const routes: Routes = [
 
 
   { path: '',           redirectTo: '/login',      pathMatch: 'full' },
-  { path: 'login',      component:  LoginComponent},
-  { path: 'register',   component:  RegisterComponent},
-  { path: 'perfil',     component:  PerfilComponent },
-  { path: 'admin',     component:  AdminComponent },
+  { path: 'login',      component :  LoginComponent                  },
+  { path: 'register',   component :  RegisterComponent               },
+  { path: 'perfil',     component :  PerfilComponent                 },
+  { path: 'admin',      redirectTo: '/admin',      pathMatch: 'full' },
   { path: 'home',       redirectTo: '/home',       pathMatch: 'full' },
   { path: 'asistencia', redirectTo: '/asistencia', pathMatch: 'full' },
   { path: 'about',      redirectTo: '/about',      pathMatch: 'full' },
@@ -45,7 +44,8 @@ const routes: Routes = [
   {
     path: 'qrgen',
     loadChildren: () => import('./pages/qrgen/qrgen.module').then( m => m.QrgenPageModule),
-    ...canActivate(() => redirectUnauthorizedTo(['/login']))
+    ...canActivate(() => redirectUnauthorizedTo(['/login'])),
+    
     
   },
   {
@@ -72,6 +72,12 @@ const routes: Routes = [
     loadChildren: () => import('./pages/map/map.module').then( m => m.MapPageModule),
     ...canActivate(() => redirectUnauthorizedTo(['/login']))
   },
+  {
+    path: 'admin',
+    loadChildren: () => import('./pages/admin/admin.module').then( m => m.AdminPageModule),
+    ...canActivate(() => redirectUnauthorizedTo(['/login']))
+  },
+
 
 
 ];

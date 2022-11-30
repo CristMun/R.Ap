@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './fab-button.component.html',
   styleUrls: ['./fab-button.component.scss'],
 })
-export class FabButtonComponent implements OnInit {
+export class FabButtonComponent{
   loading: HTMLIonLoadingElement;
   @Input() pageTitle : string;
   @Input() isNotHome : boolean;

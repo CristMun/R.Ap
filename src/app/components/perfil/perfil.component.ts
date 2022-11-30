@@ -1,8 +1,10 @@
-import { AlertController, LoadingController, ToastController } from '@ionic/angular';
+import { ModalComponent } from './../modal/modal.component';
+import { AlertController, LoadingController, ModalController, ToastController } from '@ionic/angular';
 import { Usuario } from 'src/app/models/models';
 import { FirestoreService } from './../../services/firestore.service';
 import { AuthService } from './../../services/auth.service';
 import { Component, OnInit, Input } from '@angular/core';
+import { UsuarioservService } from 'src/app/services/usuarioserv.service';
 
 @Component({
   selector: 'app-perfil',
@@ -10,6 +12,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./perfil.component.scss'],
 })
 export class PerfilComponent implements OnInit {
+
   @Input() pageTitle : string;
   @Input() isNotHome : boolean;
 
@@ -17,14 +20,20 @@ export class PerfilComponent implements OnInit {
   loading: any;
   uid: string = null;
   info: Usuario = null;
+  listadoPersona: Usuario[] = [];
   
 
   constructor(private authService: AuthService,
               private firestoreService: FirestoreService,
               private alertController: AlertController,
               private toastController: ToastController,
-              private loadingController: LoadingController) {
-                this.pageTitle = 'Mi Perfil';
+              private loadingController: LoadingController,
+              private alertCtrl: AlertController,
+              private toastCtrl: ToastController,
+              private usuarioservService: UsuarioservService,
+              private modalCtrl: ModalController,) {
+    this.pageTitle = 'Mi Perfil';
+    
                }
 
  async ngOnInit() {
@@ -32,6 +41,7 @@ export class PerfilComponent implements OnInit {
     this.authService.stateUser().subscribe(res =>{
       console.log('En perfil - Estado autenticacion', res);
       this.getUid();
+      
     })
     this.getUid();
   }
@@ -61,110 +71,38 @@ export class PerfilComponent implements OnInit {
 
 
 
-  async editAtributo(name: string,) {
-    const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
-      header: 'Editar ' + name,
-      inputs: [
-        {
-          name,
-          type: 'text',
-          placeholder: 'Ingresa tu '+ name,
-        },
-      ],
-      buttons: [
-        {
-          text: 'Cancelar',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: () => {
-            console.log('Cancelado');
-          },
-        },
-        {
-          text: 'Aceptar',
-          handler: (ev) => {
-            console.log('Aceptado', ev);
-            this.saveAtributo(name, ev[name]);
-          },
-        },
-      ],
+
+
+
+  //Modal Edit
+  
+
+  async openDetailUsuario(usuario:Usuario) {  
+    const modal = await this.modalCtrl.create({
+      component: ModalComponent,
+      componentProps: { uid: this.info.uid },
+      breakpoints: [0,0.5,1],
+      initialBreakpoint:0.5
     });
+    modal.present();
+    console.log(usuario);
     
-
-
-    await alert.present();
   }
+  
+    async toastPresent(message:string){
+      const toast = await this.toastCtrl.create({
+        message:message,
+        duration:1000,
+      })
+      toast.present();
+    }
 
-  async editGender(gender: string,) {
-    const alert = await this.alertController.create({
-      header: 'Editar Genero',
-      inputs: [
-        {
-          label: 'Masculino',
-          type: 'radio',
-          value: 'masculino',
-        },
-        {
-          label: 'Femenino',
-          type: 'radio',
-          value: 'femenino',
-        },
-        {
-          label: 'No Binario',
-          type: 'radio',
-          value: 'nobi',
-        },
-        
-      ],
-      
-      buttons: [
-        {
-          text: 'Aceptar',
-          handler: (ev) => {
-            
-            console.log('Aceptado', ev);
-            this.saveGender(ev.gender)
-          },
-        },
-      ],
-    });
 
-    await alert.present();
+  //Boton info
+  btnInfo(){
+    this.presentToast('Infomacion: ','Los datos mostrados en esta página solo los verás tú, no es un perfil público.')
   }
-
-
-  saveAtributo(name: string, input: any){
-    this.updatingLoading('Actualizando...')
-    const path = 'Usuarios';
-    const id = this.uid;
-    const updateDoc = {
-    };
-    updateDoc[name] = input;
-    
-    this.firestoreService.updateDoc(path, id, updateDoc).then( () => {
-    this.updateToast()
-    } )
-  }
-
-  saveGender( genderInput: string){
-    this.updatingLoading('Actualizando...')
-    const path = 'Usuarios';
-    const id = this.uid;
-    const updateDoc = {
-        gender: genderInput
-    };
-    
-    this.firestoreService.updateDoc(path, id, updateDoc).then( () => {
-    this.updateToast()
-    } )
-  }
-
-
-
-
-
-//Mensaje check
+  //Mensaje check
   async updateToast() {
     const toast = await this.toastController.create({
       message: 'Actualizado!',
@@ -191,5 +129,13 @@ export class PerfilComponent implements OnInit {
     });
     await this.loading.present();
   }
-
+  async presentToast(header:string,mesagge:string){
+    const alert = await this.alertCtrl.create({
+      header:header,
+      message:mesagge,
+      buttons:['OK'],
+      
+    });
+    await alert.present();
+  }
 }

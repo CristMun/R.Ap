@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Detalles</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="usuario">
+    <ion-item>
+      <ion-label position="stacked">Nombre</ion-label>
+      <ion-input type="text" [(ngModel)]="usuario.name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Apellido</ion-label>
+      <ion-input type="text" [(ngModel)]="usuario.lastname"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Rut</ion-label>
+      <ion-input type="number" [(ngModel)]="usuario.rut"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Edad</ion-label>
+      <ion-input type="number" [(ngModel)]="usuario.age"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-select [(ngModel)]="usuario.gender" placeholder="Genero">
+        <ion-select-option value="masculino">Masculino</ion-select-option>
+        <ion-select-option value="femenino">Femenino</ion-select-option>
+        <ion-select-option value="nobi">No Binario</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Direction</ion-label>
+      <ion-input type="text" [(ngModel)]="usuario.direction"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Telefono</ion-label>
+      <ion-input type="text" [(ngModel)]="usuario.phone"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Email</ion-label>
+      <ion-input type="email" [(ngModel)]="usuario.email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Contraseña</ion-label>
+      <ion-input type="email" [(ngModel)]="usuario.password"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Image</ion-label>
+      <ion-input type="url" [(ngModel)]="usuario.image"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="usuario.rol=='admin' ">
+      <ion-select [(ngModel)]="usuario.rol" placeholder="Rol">
+        <ion-select-option value="alumno">Alumno</ion-select-option>
+        <ion-select-option value="profesor">Profesor</ion-select-option>
+        <ion-select-option value="admin">Admin</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+  </div>
+
+  <ion-button expand="block" color="success" (click)="updateUsuario()">
+    <ion-icon name="save" slot="start">Actualizar</ion-icon>
+  </ion-button>
+  <ion-button expand="block" color="danger" (click)="deleteUsuario()">
+    <ion-icon name="trash" slot="start">Eliminar</ion-icon>
+  </ion-button>
+</ion-content>  

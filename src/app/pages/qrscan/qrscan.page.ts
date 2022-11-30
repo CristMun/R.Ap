@@ -1,6 +1,9 @@
+
 import { Component, OnInit } from '@angular/core';
-import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
-/* import { Camera } from '@awesome-cordova-plugins/camera'; */
+import { Plugins } from '@capacitor/core'
+const  { BarcodeScanner } = Plugins
+
+
 
 @Component({
   selector: 'app-qrscan',
@@ -11,17 +14,17 @@ export class QrscanPage implements OnInit {
 
   pageTitle = 'Escanear QR';
   isNotHome = true;
-  code: any;
 
-  constructor(private barcodeScanner: BarcodeScanner) {}
+  constructor() {}
 
   ngOnInit() {
   }
-/* 
-  scanQR(){
-    Camera.getPicture()
-    .then((data) => console.log('Took a picture!', data))
-    .catch((e) => console.log('Error occurred while taking a picture', e));
-  } */
+
+
+  async startScanner(){
+    const result = await BarcodeScanner.startScan();
+    console.log(result);
+    
+  }
 
 }

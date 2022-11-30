@@ -17,67 +17,65 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
 
-  <ion-list *ngIf="info">
-    <ion-item>
-      <ion-label>
-        {{info.name}}
-      </ion-label>
-      <ion-icon (click)="editAtributo('name')" slot="end" name="create"></ion-icon>
-    </ion-item>
-    <ion-item>
-      <ion-label>
-        {{info.lastname}}
-      </ion-label>
-      <ion-icon (click)="editAtributo('lastname')" slot="end" name="create"></ion-icon>
-    </ion-item>
-    <ion-item>
-      <ion-label>
-        {{info.rut}}
-      </ion-label>
-      <ion-icon (click)="editAtributo('rut')" slot="end" name="create"></ion-icon>
-    </ion-item>
-    <ion-item>
-      <ion-label>
-        {{info.age}} Año(s)
-      </ion-label>
-      <ion-icon (click)="editAtributo('age')" slot="end" name="create"></ion-icon>
-    </ion-item>
-    <ion-item>
-      <ion-label>
-        {{info.direction}}
-      </ion-label>
-      <ion-icon (click)="editAtributo('direction')" slot="end" name="create"></ion-icon>
-    </ion-item>
-    <ion-item>
-      <ion-label>
-        {{info.gender}}
-      </ion-label>
-      <ion-icon (click)="editGender('gender')" slot="end" name="create"></ion-icon>
-    </ion-item>
-    <ion-item>
-      <ion-label>
-        {{info.phone}}
-      </ion-label>
-      <ion-icon (click)="editAtributo('phone')" slot="end" name="create"></ion-icon>
-    </ion-item>
+<ion-content [fullscreen]="true">
+  <ion-card *ngIf="info">
+
+    <ion-card-header>
+      <ion-avatar>
+        <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+        {{info.image}}
+      </ion-avatar>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-card-title>
+        {{info.name}} {{info.lastname}}
+      </ion-card-title>
+      <ion-item>
+        <ion-label>
+          <ion-icon name="card-outline"></ion-icon> {{info.rut}}
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <ion-icon name="calendar-clear-outline"></ion-icon> {{info.age}} Año(s)
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <ion-icon name="map-outline"></ion-icon> {{info.direction}}
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <ion-icon name="call-outline"></ion-icon> {{info.phone}}
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <ion-icon name="male-female-outline"></ion-icon> {{info.gender}} 
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <ion-icon name="mail-outline"></ion-icon> {{info.email}} 
+        </ion-label>
+      </ion-item>
+      <ion-button fill="outline" expand="block" (click)="openDetailUsuario(info)">
+        <ion-icon name="create-outline"></ion-icon>Editar Perfil
+      </ion-button>
+      <ion-button fill="outline" expand="block" (click)="btnInfo()">
+        <ion-icon name="alert-circle-outline"></ion-icon>Info
+      </ion-button>
+      
+   </ion-card-content>
+
+
+   
+
+
     
-
-   <!--  Credenciales -->
-    <ion-item>
-      <ion-label>
-        {{info.email}} 
-      </ion-label>
-      <ion-icon (click)="editAtributo('email')" slot="end" name="create"></ion-icon>
-    </ion-item>
-    <ion-item>
-      <ion-label>
-        {{info.password}}
-      </ion-label>
-      <ion-icon  (click)="editAtributo('password')" slot="end" name="create"></ion-icon>
-    </ion-item>
-<!--  Credenciales -->
-</ion-list>
-<app-fab-button></app-fab-button>
+  </ion-card>
 </ion-content>
+<app-fab-button></app-fab-button>
