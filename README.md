@@ -1,4 +1,4 @@
 # RegistrApp
 Proyecto de semestral App Movil
 
-Para que funcione el "npm install" hay que ponerle --force al final por ahora
+Para que funcione el "npm install" hay que poner --force al final por ahora
