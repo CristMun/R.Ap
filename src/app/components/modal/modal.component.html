@@ -26,7 +26,6 @@
       <ion-select [(ngModel)]="usuario.gender" placeholder="Genero">
         <ion-select-option value="masculino">Masculino</ion-select-option>
         <ion-select-option value="femenino">Femenino</ion-select-option>
-        <ion-select-option value="nobi">No Binario</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item>
@@ -45,10 +44,35 @@
       <ion-label position="stacked">Contraseña</ion-label>
       <ion-input type="email" [(ngModel)]="usuario.password"></ion-input>
     </ion-item>
+
+
     <ion-item>
-      <ion-label position="stacked">Image</ion-label>
-      <ion-input type="url" [(ngModel)]="usuario.image"></ion-input>
+      <ion-label position="stacked">Foto de Perfil</ion-label>
+      <br>
+      <br>
+      <label>Actual:</label>
+      <img class="image" [src]="usuario.image" alt="">
+      
+      <ion-buttons slot="end">
+        <ion-button>
+          <label for="file-upload">
+            <ion-icon name="camera"></ion-icon>
+          </label>
+          <input (change)="newImageUpload($event)" id="file-upload" style="display: none;" type="file" accept="image/*">
+        </ion-button>
+      </ion-buttons>
+      <label>Nueva:</label>
+      <img [src]="newImage" alt="">
+      
+     
+      
     </ion-item>
+
+   
+
+
+
+
 
     <ion-item *ngIf="usuario.rol=='admin' ">
       <ion-select [(ngModel)]="usuario.rol" placeholder="Rol">

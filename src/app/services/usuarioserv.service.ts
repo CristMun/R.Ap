@@ -41,6 +41,7 @@ export class UsuarioservService {
         image: usuario.image
       });
   }
+  
 
   deleteUsuario(usuario: Usuario){
     const usuariosRef = doc(this.firestore,`Usuarios/${usuario.uid}`);

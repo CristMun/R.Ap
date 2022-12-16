@@ -1,10 +1,11 @@
 import { ModalComponent } from './../modal/modal.component';
+
 import { AlertController, LoadingController, ModalController, ToastController } from '@ionic/angular';
 import { Usuario } from 'src/app/models/models';
 import { FirestoreService } from './../../services/firestore.service';
 import { AuthService } from './../../services/auth.service';
 import { Component, OnInit, Input } from '@angular/core';
-import { UsuarioservService } from 'src/app/services/usuarioserv.service';
+
 
 @Component({
   selector: 'app-perfil',
@@ -25,12 +26,10 @@ export class PerfilComponent implements OnInit {
 
   constructor(private authService: AuthService,
               private firestoreService: FirestoreService,
-              private alertController: AlertController,
               private toastController: ToastController,
               private loadingController: LoadingController,
               private alertCtrl: AlertController,
               private toastCtrl: ToastController,
-              private usuarioservService: UsuarioservService,
               private modalCtrl: ModalController,) {
     this.pageTitle = 'Mi Perfil';
     

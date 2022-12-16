@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
     password:  null,
     direction: null,
     phone:     null,
-    image:     null,
+    image:     'https',
     rol:      'alumno',
   }
 

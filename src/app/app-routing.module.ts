@@ -72,11 +72,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/map/map.module').then( m => m.MapPageModule),
     ...canActivate(() => redirectUnauthorizedTo(['/login']))
   },
-  {
-    path: 'admin',
-    loadChildren: () => import('./pages/admin/admin.module').then( m => m.AdminPageModule),
-    ...canActivate(() => redirectUnauthorizedTo(['/login']))
-  },
+
 
 
 

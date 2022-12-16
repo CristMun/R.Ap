@@ -22,3 +22,10 @@ ion-label, ion-card-title{
   text-align: center;
   font-size: 40px;
 }
+
+ion-avatar {
+  width: 25%;
+  height: 25%;
+
+  --border-radius: 4px;
+}

@@ -25,7 +25,7 @@ export class AppComponent {
     { title: 'Mapa',       url: '/map',         icon: 'map'      },
     { title: 'Conversor',  url: '/coversor',    icon: 'cash'     },
     { title: 'About',      url: '/about',       icon: 'alert'    },
-    { title: 'Admin',      url: '/admin',       icon: 'hammer'   },
+
   ];
  
   constructor(private firestore: FirestoreService,
