@@ -64,7 +64,7 @@ export class ModalComponent implements OnInit {
     toast.present();
   }
 
-
+/* Subir foto */
   async newImageUpload(event: any){
     if(event.target.files && event.target.files[0]){
       this.newFile = event.target.files[0]

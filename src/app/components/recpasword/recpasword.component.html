@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Recuperar contraseña</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card-content>
+    <ion-card>
+      <h1 class="card-tittle" style="text-align: center;">Ingresa tu Email</h1>
+
+      <ion-item>
+        <ion-input
+        type="email"
+        class="form-control"
+        [formControl]="userEmail"
+        required
+      ></ion-input>
+      </ion-item>
+      <div class="form-group">
+        <ion-button class="btn btn-primary btn-lg" (click)="onReset()">Enviar</ion-button>
+      </div>
+      
+      <div>
+        <a  [routerLink]="['/login']"><h2>Volver</h2></a>
+      </div>
+        
+      
+        
+        
+      
+      
+      
+      
+
+      
+    </ion-card>
+  </ion-card-content>
+</ion-content>
+

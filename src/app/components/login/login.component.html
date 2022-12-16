@@ -15,7 +15,19 @@
       </ion-item>
 
       <ion-button (click)="login()"><ion-label>Iniciar Sesion</ion-label></ion-button>
-      <ion-button [routerLink]="['/register']" routerLinkActive="router-link-active"><ion-label>Registrate</ion-label></ion-button>
+
+      <div>
+        <p>
+          ¿No tienes una cuenta?
+          <a [routerLink]="['/register']">Registrarme</a>
+        </p>
+      </div>
+      <div>
+        <p>
+          ¿Olvidaste tu contraseña?
+          <a [routerLink]="['/recpassword']">Recuperar</a>
+        </p>
+      </div>
     </ion-card-content>
   
   </ion-card>

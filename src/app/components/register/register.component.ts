@@ -44,7 +44,6 @@ export class RegisterComponent implements OnInit {
     const res = await this.auth.registrarUser(this.datos)
 
     if(res){
-      console.log('consola: Exito al crear usuario')
       const path = 'Usuarios';
       const id =res.user.uid
       this.datos.uid = id;

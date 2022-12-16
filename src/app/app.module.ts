@@ -12,6 +12,7 @@ import { LoginComponent } from './components/login/login.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { FabButtonComponent } from './components/fab-button/fab-button.component';
 import { ModalComponent } from './components/modal/modal.component';
+import { RecpaswordComponent } from './components/recpasword/recpasword.component';
 
 //Firebase imports
 import { AngularFireModule } from '@angular/fire/compat';
@@ -36,6 +37,7 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
     PerfilComponent,
     FabButtonComponent,
     ModalComponent,
+    RecpaswordComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +50,7 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
     BrowserModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
+    
 
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),

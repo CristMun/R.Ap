@@ -1,3 +1,4 @@
+import { RecpaswordComponent } from './components/recpasword/recpasword.component';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { canActivate,redirectUnauthorizedTo} from '@angular/fire/auth-guard';
@@ -13,6 +14,7 @@ const routes: Routes = [
 
   { path: '',           redirectTo: '/login',      pathMatch: 'full' },
   { path: 'login',      component :  LoginComponent                  },
+  { path: 'recpassword',component :  RecpaswordComponent             },
   { path: 'register',   component :  RegisterComponent               },
   { path: 'perfil',     component :  PerfilComponent                 },
   { path: 'admin',      redirectTo: '/admin',      pathMatch: 'full' },
@@ -72,6 +74,9 @@ const routes: Routes = [
     loadChildren: () => import('./pages/map/map.module').then( m => m.MapPageModule),
     ...canActivate(() => redirectUnauthorizedTo(['/login']))
   },
+
+  
+
 
 
 

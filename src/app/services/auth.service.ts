@@ -10,6 +10,15 @@ export class AuthService {
 
   constructor(private authfirebase:AngularFireAuth) { }
 
+  async resetPassword(email:string):Promise<void>{
+    try{
+      return this.authfirebase.sendPasswordResetEmail(email);
+    }
+    catch(error){
+      console.log(error);
+    }
+  }
+
   login(email: string, password: string) {
     return this.authfirebase.signInWithEmailAndPassword(email, password)
   }
